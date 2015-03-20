@@ -1,4 +1,4 @@
-$.widget.setFirstPage(Alloy.createController('firstView', {pager: $.widget}).getView());
+$.widget.setFirstPage("First", Alloy.createController('firstView', {pager: $.widget}).getView());
 
 $.mainWindow.open();
 

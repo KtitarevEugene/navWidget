@@ -1,7 +1,7 @@
 <Alloy>
 	<View layout="vertical">
 		<View id="header" layout="horizontal">
-			<ImageView id="icon" image="/PagedWidget/back.png" onClick="backButtonClick" />
+			<ImageView id="icon" image="/PagedWidget/back.png" visible="false" onClick="backButtonClick" />
 			<Label id="currentWindowTitle" text="Window Header" />
 		</View>
 		<View id="headerBorder"></View>

@@ -1,5 +1,5 @@
 <Alloy>
-	<View class="container" layout="vertical">
+	<View class="container" layout="vertical" backgroundColor="#0f0">
 		<Label text="First View" />
 		<Button title="Open second" onClick="showNext" />
 	</View>
