@@ -1,9 +1,10 @@
-"View": {
-	color: '#000',
-	font: {
-		fontSize: 18,
-		fontWeight: 'bold'
-	},
-	height: Ti.UI.SIZE,
-	width: Ti.UI.SIZE
+"#header" : {
+	width : "TI.UI.FILL",
+	height: 50,
+	backgroundColor: "black"
+}
+
+"#icon" : {
+	width: 40,
+	height: 40
 }

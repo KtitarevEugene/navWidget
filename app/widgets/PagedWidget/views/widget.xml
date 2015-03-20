@@ -1,9 +1,10 @@
 <Alloy>
-	<View>
-		<View class="header">
-			<ImageView image=>
+	<View layout="vertical">
+		<View class="header" layout="horizontal">
+			<ImageView id="icon" image="back.png" />
+			<Button title="Back"></Button>
 		</View>
-		<View class="footer">
+		<View class="footer" layout="horizontal">
 		</View>
 	</View>
 </Alloy>
