@@ -1,0 +1,6 @@
+<Alloy>
+	<View class="container" layout="vertical">
+		<Label text="First View" />
+		<Button title="Open second" onClick="showNext" />
+	</View>
+</Alloy>

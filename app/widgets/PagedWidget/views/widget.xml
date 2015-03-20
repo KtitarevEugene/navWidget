@@ -1,10 +1,10 @@
 <Alloy>
 	<View layout="vertical">
-		<View class="header" layout="horizontal">
-			<ImageView id="icon" image="back.png" />
-			<Button title="Back"></Button>
+		<View id="header" layout="horizontal">
+			<ImageView id="icon" image="/PagedWidget/back.png" onClick="backButtonClick" />
+			<Label id="currentWindowTitle" text="Window Header" />
 		</View>
-		<View class="footer" layout="horizontal">
-		</View>
+		<View id="headerBorder"></View>
+		<View id="content"></View>
 	</View>
 </Alloy>

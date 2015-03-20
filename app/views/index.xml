@@ -1,5 +1,5 @@
 <Alloy>
 	<Window class="container" id="mainWindow">
-		<Widget src="PagedWidget"></Widget>
+		<Widget id="widget" src="PagedWidget"></Widget>
 	</Window>
 </Alloy>

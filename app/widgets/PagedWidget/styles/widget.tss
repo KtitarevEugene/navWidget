@@ -1,10 +1,26 @@
 "#header" : {
-	width : "TI.UI.FILL",
-	height: 50,
-	backgroundColor: "black"
+	width : "100%",
+	height: "50",
+	backgroundColor: "#0000EE"
+}
+
+"#headerBorder" : {
+	height: "1",
+	width: "100%",
+	backgroundColor: "#DCDCDC"
 }
 
 "#icon" : {
-	width: 40,
-	height: 40
+	top: "5",
+	left: "5",
+	width: "40",
+	height: "40"
+}
+
+"#currentWindowTitle" : {
+	left: "15",
+	color: "#fff",
+    font: {
+        fontSize: 20,
+    }
 }
