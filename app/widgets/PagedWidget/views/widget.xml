@@ -1,0 +1,9 @@
+<Alloy>
+	<View>
+		<View class="header">
+			<ImageView image=>
+		</View>
+		<View class="footer">
+		</View>
+	</View>
+</Alloy>
