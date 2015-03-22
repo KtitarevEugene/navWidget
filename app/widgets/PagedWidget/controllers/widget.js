@@ -1,6 +1,6 @@
 var backButtonHandler = function(e) {
-	var hidingView = stack[stack.length - 1];
-	var openingView = stack[stack.length - 2];
+	var hidingView = stack[stack.length - 1].component;
+	var openingView = stack[stack.length - 2].component;
 	
 	var openingViewMatrix = Ti.UI.create2DMatrix();
 	openingViewMatrix = openingViewMatrix.scale(1, 1);
@@ -12,12 +12,7 @@ var backButtonHandler = function(e) {
 		transform: openingViewMatrix,
 		duration: 300
 	});
-	
-	openAnimation.addEventListener("complete", function() {
-		titles.pop();
-		$.currentWindowTitle.text = titles[titles.length - 1];
-	});
-	
+		
 	var hideAnimation = Ti.UI.createAnimation({
 		transform: hidingViewMatrix,
 		duration: 300
@@ -25,7 +20,11 @@ var backButtonHandler = function(e) {
 	
 	hideAnimation.addEventListener("complete", function() {
 		stack.pop();
+		$.currentWindowTitle.text = stack[stack.length - 1].windowTitle;
 		$.content.remove(hidingView);
+		$.actionBarContainer.removeAllChildren();
+		for(var elem in stack[stack.length - 1].actionBarElements)
+			$.actionBarContainer.add(elem);
 		if(stack.length < 2)
 			$.icon.visible = false;
 	});
@@ -36,7 +35,6 @@ var backButtonHandler = function(e) {
 };
 
 var stack = [];
-var titles = [];
 
 function backButtonClick (e) {
 	if(typeof(backButtonHandler) === "function")
@@ -47,8 +45,10 @@ exports.onBackButtonClick = function(handler) {
 	backButtonHandler = handler;
 };
 
-exports.openPage = function (title, view) {
-	var hidingView = stack[stack.length - 1];
+exports.openPage = function (title, view, elements) {
+	elements = elements || [];
+	
+	var hidingView = stack[stack.length - 1].component;
 
 	var openingViewMatrix = Ti.UI.create2DMatrix();
 	openingViewMatrix = openingViewMatrix.translate(-400, 0);
@@ -61,15 +61,18 @@ exports.openPage = function (title, view) {
 		duration: 300
 	});
 	openAnimation.addEventListener("complete", function() {
-		stack.push(view);
-		titles.push(title);
+		stack.push({component: view, 
+				windowTitle: title, 
+				actionBarElements: elements});
 		view.setLeft(leftPos);
 		view.setRight(rightPos);
 		$.currentWindowTitle.text = title;
-		$.icon.visible = true;
+		$.actionBarContainer.removeAllChildren();
+		for(var elem in elements)
+			$.actionBarContainer.add(elem);
+		if(!$.icon.visible)
+			$.icon.visible = true;
 	});
-	// openAnimation.addEventListener("start", function(){
-	// });
 	
 	var hideAnimation = Ti.UI.createAnimation({
 		transform: hidingViewMatrix,
@@ -90,11 +93,13 @@ exports.openPage = function (title, view) {
 	view.animate(openAnimation);
 };
 
-exports.setFirstPage = function(title, view) {
+exports.setFirstPage = function(title, view, elements) {
 	title = title || "";
+	elements = elements || [];
 	$.icon.visible = false;
 	$.currentWindowTitle.text = title;
-	stack.push(view);
-	titles.push(title);
+	stack.push({component: view, windowTitle: title});	
 	$.content.add(view);
+	for(var elem in elements)
+		$.actionBarContainer.add(elem);
 };

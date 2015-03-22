@@ -4,6 +4,10 @@
 	backgroundColor: "#0000EE"
 }
 
+"#headerWrap" : {
+	height: "50"
+}
+
 "#headerBorder" : {
 	height: "1",
 	width: "100%",
@@ -17,8 +21,14 @@
 	height: "40"
 }
 
+"#iconWrap" : {
+	top: "-50",
+	left: "0",
+	height: "50"
+}
+
 "#currentWindowTitle" : {
-	left: "15",
+	top: "12.5",
 	color: "#fff",
     font: {
         fontSize: 20,
