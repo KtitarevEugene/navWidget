@@ -1,5 +1,6 @@
 <Alloy>
-	<View class="container" layout="vertical">
+	<View class="container" layout="vertical" backgroundColor="#f00">
 		<Label text="Second view" />
+		<Button title="Second third" onClick="showThird"/>
 	</View>
 </Alloy>

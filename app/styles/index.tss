@@ -1,5 +1,6 @@
-".container": {
-	backgroundColor:"white"
+"Window": {
+	backgroundColor:"white",
+	navBarHidden: true,
 }
 
 "Label": {
