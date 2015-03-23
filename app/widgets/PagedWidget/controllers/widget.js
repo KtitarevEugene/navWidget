@@ -1,7 +1,7 @@
 var backButtonHandler = function(e) {
 	var hidingView = stack[stack.length - 1].component;
 	var openingView = stack[stack.length - 2].component;
-	
+
 	var openingViewMatrix = Ti.UI.create2DMatrix();
 	openingViewMatrix = openingViewMatrix.scale(1, 1);
 	
@@ -23,8 +23,9 @@ var backButtonHandler = function(e) {
 		$.currentWindowTitle.text = stack[stack.length - 1].windowTitle;
 		$.content.remove(hidingView);
 		$.actionBarContainer.removeAllChildren();
-		for(var elem in stack[stack.length - 1].actionBarElements)
-			$.actionBarContainer.add(elem);
+		
+		for(var index in stack[stack.length - 1].actionBarElements)
+			$.actionBarContainer.add(stack[stack.length - 1].actionBarElements[index]);
 		if(stack.length < 2)
 			$.icon.visible = false;
 	});
@@ -68,8 +69,8 @@ exports.openPage = function (title, view, elements) {
 		view.setRight(rightPos);
 		$.currentWindowTitle.text = title;
 		$.actionBarContainer.removeAllChildren();
-		for(var elem in elements)
-			$.actionBarContainer.add(elem);
+		for(var index in elements)
+			$.actionBarContainer.add(elements[index]);
 		if(!$.icon.visible)
 			$.icon.visible = true;
 	});
@@ -98,8 +99,10 @@ exports.setFirstPage = function(title, view, elements) {
 	elements = elements || [];
 	$.icon.visible = false;
 	$.currentWindowTitle.text = title;
-	stack.push({component: view, windowTitle: title});	
+	stack.push({component: view, 
+		windowTitle: title, 
+		actionBarElements: elements});	
 	$.content.add(view);
-	for(var elem in elements)
-		$.actionBarContainer.add(elem);
+	for(var index in elements)
+		$.actionBarContainer.add(elements[index]);
 };
