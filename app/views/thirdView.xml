@@ -1,5 +1,9 @@
 <Alloy>
 	<View class="container" layout="vertical" backgroundColor="#00f">
+		<View id="controls">
+			<Button title="Remove" onClick="onRemove" />
+			<Button title="Save" onClick="onSave" />
+		</View>
 		<Label text="Third view" />
 	</View>
 </Alloy>

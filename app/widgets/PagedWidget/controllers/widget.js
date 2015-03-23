@@ -54,12 +54,20 @@ exports.onBackButtonClick = function(handler) {
 	backButtonHandler = handler;
 };
 
-exports.openPage = function (title, view, elements) {
+exports.openPage = function (title, view) {
 	if(!isInAction)
 	{
-		elements = elements || [];
+		var elements = [];
 		
 		var hidingView = stack[stack.length - 1].component;
+		
+		for(var index in view.children)
+			if(view.children[index].id == "controls")
+			{
+				elements = view.children[index].children;
+				view.remove(view.children[index]);
+				break;
+			}
 	
 		var openingViewMatrix = Ti.UI.create2DMatrix();
 		openingViewMatrix = openingViewMatrix.translate(-Ti.Platform.DisplayCaps().displayCaps.platformWidth * 0.8, 0);
@@ -109,9 +117,17 @@ exports.openPage = function (title, view, elements) {
 	}
 };
 
-exports.setFirstPage = function(title, view, elements) {
+exports.setFirstPage = function(title, view) {
 	title = title || "";
-	elements = elements || [];
+	elements = [];
+	for(var index in view.children)
+		if(view.children[index].id == "controls")
+		{
+			elements = view.children[index].children;
+			view.remove(view.children[index]);
+			break;
+		}
+
 	$.icon.visible = false;
 	$.currentWindowTitle.text = title;
 	stack.push({component: view, 

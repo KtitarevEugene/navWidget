@@ -1,5 +1,8 @@
 <Alloy>
 	<View class="container" layout="vertical" backgroundColor="#0f0">
+		<View id="controls">
+			<Button title="Add" onClick="onAdd" />
+		</View>
 		<Label text="First View" />
 		<Button title="Open second" onClick="showNext" />
 	</View>
