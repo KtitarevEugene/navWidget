@@ -1,6 +1,0 @@
-<Alloy>
-	<View class="container" layout="vertical">
-		<View id="header">
-		</View>
-	</View>
-</Alloy>
