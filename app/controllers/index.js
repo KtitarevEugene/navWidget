@@ -1,5 +1,6 @@
 var button = Ti.UI.createButton({
 	title: "Add",
+	accessibilityHidden: "true"
 });
 
 button.addEventListener("click", function(e) {
